@@ -13,5 +13,26 @@ const MessageFormSocial = dynamic(() =>
 );
 
 export default function Chats() {
-  return <div className="background">chats</div>;
+  const { username, secret } = useContext(Context);
+  const [showChat, setShowChat] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof document !== null) {
+      setShowChat(true);
+    }
+  });
+  if (!showChat) return <div />;
+  return (
+    <div className="background">
+      <div className="shadow">
+        <ChatEngine
+          height="calc(100vh - 200px)"
+          projectID="7439de9e-0576-403b-8597-666487e5edb2"
+          userName={username}
+          userSecret={secret}
+        />
+      </div>
+    </div>
+  );
 }
