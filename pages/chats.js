@@ -22,6 +22,10 @@ export default function Chats() {
       setShowChat(true);
     }
   });
+
+  useEffect(() => {
+    if (username.length === 0 || secret.length === 0) router.push("/");
+  });
   if (!showChat) return <div />;
   return (
     <div className="background">
